@@ -139,6 +139,11 @@
                       controller.$render();
                       // Not using $setViewValue so we don't clobber the model value and dirty the form
                       // without any kind of user interaction.
+                      $timeout(function() {
+                          setSelectionRange(viewValueWithDivisors.length);
+                          $element[0].focus();
+                          $element[0].setSelectionRange(viewValueWithDivisors.length, viewValueWithDivisors.length + 1);
+                      });
                     }
                   } catch (e) {
                     $log.error('[mask - parseViewValue]');
